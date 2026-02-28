@@ -1,0 +1,20 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "eu.ansvar/anti-corruption-aml-mcp",
+  "description": "Anti-Corruption & AML MCP — FATF 40 Recommendations, UNCAC, OECD Anti-Bribery Convention, EU AML Directives (4/5/6AMLD), Wolfsberg Group standards, FATF mutual evaluations, GRECO reports",
+  "repository": {
+    "url": "https://github.com/Ansvar-Systems/anti-corruption-aml-mcp",
+    "source": "github"
+  },
+  "homepage": "https://ansvar.eu",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@ansvar/anti-corruption-aml-mcp",
+      "version": "0.1.0",
+      "transport": { "type": "stdio" }
+    }
+  ]
+}
