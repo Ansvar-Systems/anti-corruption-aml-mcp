@@ -1,0 +1,216 @@
+{
+  "schema_version": "1.0",
+  "mcp_name": "Anti-Corruption & AML MCP",
+  "mcp_type": "domain_intelligence",
+  "coverage_date": "2026-02-28",
+  "database_version": "0.1.0",
+  "sources": [
+    {
+      "id": "FATF_RECOMMENDATIONS",
+      "name": "FATF 40 Recommendations (2012, updated 2023)",
+      "authority": "Financial Action Task Force (FATF)",
+      "url": "https://www.fatf-gafi.org/en/recommendations.html",
+      "version": "2026-02-28",
+      "item_count": 40,
+      "item_type": "recommendation",
+      "last_refresh": "2026-02-28",
+      "refresh_frequency": "on_change",
+      "completeness": "full",
+      "completeness_note": "All 40 FATF Recommendations with full text"
+    },
+    {
+      "id": "UNCAC",
+      "name": "United Nations Convention against Corruption",
+      "authority": "UNODC",
+      "url": "https://www.unodc.org/unodc/en/corruption/uncac.html",
+      "version": "2026-02-28",
+      "item_count": 33,
+      "item_type": "article",
+      "last_refresh": "2026-02-28",
+      "refresh_frequency": "on_change",
+      "completeness": "partial",
+      "completeness_note": "Key provisions covering preventive measures, criminalization, international cooperation, and asset recovery"
+    },
+    {
+      "id": "OECD_ANTI_BRIBERY",
+      "name": "OECD Anti-Bribery Convention",
+      "authority": "OECD",
+      "url": "https://www.oecd.org/en/topics/anti-bribery-and-corruption.html",
+      "version": "2026-02-28",
+      "item_count": 13,
+      "item_type": "article",
+      "last_refresh": "2026-02-28",
+      "refresh_frequency": "on_change",
+      "completeness": "full",
+      "completeness_note": "All 13 articles of the Convention on Combating Bribery"
+    },
+    {
+      "id": "EU_4AMLD",
+      "name": "Fourth Anti-Money Laundering Directive (4AMLD)",
+      "authority": "European Union",
+      "url": "https://eur-lex.europa.eu/eli/dir/2015/849/oj",
+      "version": "2026-02-28",
+      "item_count": 8,
+      "item_type": "article",
+      "last_refresh": "2026-02-28",
+      "refresh_frequency": "on_change",
+      "completeness": "partial",
+      "completeness_note": "Key provisions on CDD, beneficial ownership, suspicious transaction reporting"
+    },
+    {
+      "id": "EU_5AMLD",
+      "name": "Fifth Anti-Money Laundering Directive (5AMLD)",
+      "authority": "European Union",
+      "url": "https://eur-lex.europa.eu/eli/dir/2018/843/oj",
+      "version": "2026-02-28",
+      "item_count": 5,
+      "item_type": "article",
+      "last_refresh": "2026-02-28",
+      "refresh_frequency": "on_change",
+      "completeness": "partial",
+      "completeness_note": "Key amendments: beneficial ownership registers, virtual currencies, high-value goods"
+    },
+    {
+      "id": "EU_6AMLD",
+      "name": "Sixth Anti-Money Laundering Directive (6AMLD)",
+      "authority": "European Union",
+      "url": "https://eur-lex.europa.eu/eli/dir/2018/1673/oj",
+      "version": "2026-02-28",
+      "item_count": 6,
+      "item_type": "article",
+      "last_refresh": "2026-02-28",
+      "refresh_frequency": "on_change",
+      "completeness": "partial",
+      "completeness_note": "Key provisions on ML predicate offences, aiding/abetting, corporate liability"
+    },
+    {
+      "id": "EU_AMLR_2024",
+      "name": "EU AML Regulation 2024 (AMLR)",
+      "authority": "European Union",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1624/oj",
+      "version": "2026-02-28",
+      "item_count": 7,
+      "item_type": "article",
+      "last_refresh": "2026-02-28",
+      "refresh_frequency": "on_change",
+      "completeness": "partial",
+      "completeness_note": "Key provisions from directly applicable AML regulation replacing directive-based approach"
+    },
+    {
+      "id": "GRECO",
+      "name": "GRECO Evaluation Reports",
+      "authority": "Council of Europe",
+      "url": "https://www.coe.int/en/web/greco",
+      "version": "2026-02-28",
+      "item_count": 11,
+      "item_type": "evaluation_record",
+      "last_refresh": "2026-02-28",
+      "refresh_frequency": "quarterly",
+      "completeness": "partial",
+      "completeness_note": "Evaluation round themes and key recommendations across 5 rounds"
+    },
+    {
+      "id": "WOLFSBERG",
+      "name": "Wolfsberg Group Standards",
+      "authority": "Wolfsberg Group",
+      "url": "https://www.wolfsberg-principles.com",
+      "version": "2026-02-28",
+      "item_count": 8,
+      "item_type": "standard",
+      "last_refresh": "2026-02-28",
+      "refresh_frequency": "on_change",
+      "completeness": "partial",
+      "completeness_note": "Key standards on correspondent banking, private banking, sanctions, trade finance, and payments"
+    },
+    {
+      "id": "FATF_COUNTRY_RATINGS",
+      "name": "FATF Country Ratings (Grey/Black Lists)",
+      "authority": "FATF",
+      "url": "https://www.fatf-gafi.org/en/countries/black-and-grey-lists.html",
+      "version": "2026-02-28",
+      "item_count": 26,
+      "item_type": "country_rating",
+      "last_refresh": "2026-02-28",
+      "refresh_frequency": "quarterly",
+      "completeness": "full",
+      "completeness_note": "All current grey and black list entries with deficiencies and action plans"
+    },
+    {
+      "id": "FATF_MUTUAL_EVALUATIONS",
+      "name": "FATF Mutual Evaluations",
+      "authority": "FATF",
+      "url": "https://www.fatf-gafi.org/en/topics/mutual-evaluations.html",
+      "version": "2026-02-28",
+      "item_count": 10,
+      "item_type": "mutual_evaluation",
+      "last_refresh": "2026-02-28",
+      "refresh_frequency": "on_change",
+      "completeness": "partial",
+      "completeness_note": "Selected country evaluations with effectiveness and technical compliance ratings"
+    }
+  ],
+  "gaps": [
+    {
+      "id": "uncac-partial",
+      "description": "UNCAC includes key provisions only, not all 71 articles",
+      "reason": "Full treaty text is lengthy; key provisions selected for compliance relevance",
+      "impact": "medium",
+      "planned": true,
+      "target_version": "0.2"
+    },
+    {
+      "id": "amld-key-articles-only",
+      "description": "EU AML Directives include key articles only, not complete directive text",
+      "reason": "Complete directive text is covered by comprehensive-eu-law-mcp",
+      "impact": "low",
+      "planned": false,
+      "target_version": null
+    },
+    {
+      "id": "limited-mutual-evaluations",
+      "description": "Only 10 country mutual evaluations included",
+      "reason": "FATF has evaluated 200+ jurisdictions; expanding in future versions",
+      "impact": "medium",
+      "planned": true,
+      "target_version": "0.2"
+    },
+    {
+      "id": "wolfsberg-summaries",
+      "description": "Wolfsberg standards include key requirements, not full standard text",
+      "reason": "Full standards are lengthy; key requirements extracted",
+      "impact": "low",
+      "planned": true,
+      "target_version": "0.2"
+    },
+    {
+      "id": "greco-limited",
+      "description": "GRECO data covers evaluation round themes, not per-country reports",
+      "reason": "Per-country GRECO reports are numerous and frequently updated",
+      "impact": "medium",
+      "planned": true,
+      "target_version": "0.3"
+    }
+  ],
+  "tools": [
+    { "name": "search_aml_requirements", "category": "search", "description": "FTS5 search across all AML/anti-corruption provisions", "data_sources": ["FATF_RECOMMENDATIONS", "UNCAC", "OECD_ANTI_BRIBERY", "EU_4AMLD", "EU_5AMLD", "EU_6AMLD", "EU_AMLR_2024", "GRECO"], "verified": true },
+    { "name": "get_fatf_recommendation", "category": "lookup", "description": "Retrieve a specific FATF Recommendation by number (1-40)", "data_sources": ["FATF_RECOMMENDATIONS"], "verified": true },
+    { "name": "get_fatf_country_rating", "category": "lookup", "description": "Get FATF grey/black list status for a country", "data_sources": ["FATF_COUNTRY_RATINGS"], "verified": true },
+    { "name": "get_fatf_mutual_evaluation", "category": "lookup", "description": "Get FATF mutual evaluation results for a country", "data_sources": ["FATF_MUTUAL_EVALUATIONS"], "verified": true },
+    { "name": "get_directive_article", "category": "lookup", "description": "Retrieve articles from EU AML Directives or other source documents", "data_sources": ["EU_4AMLD", "EU_5AMLD", "EU_6AMLD", "EU_AMLR_2024", "UNCAC", "OECD_ANTI_BRIBERY", "GRECO"], "verified": true },
+    { "name": "get_wolfsberg_standard", "category": "lookup", "description": "Retrieve Wolfsberg Group standards by title or category", "data_sources": ["WOLFSBERG"], "verified": true },
+    { "name": "assess_aml_risk", "category": "analysis", "description": "Assess AML risk factors for a jurisdiction with optional sector filter", "data_sources": ["FATF_COUNTRY_RATINGS", "FATF_MUTUAL_EVALUATIONS", "FATF_RECOMMENDATIONS"], "verified": true },
+    { "name": "map_aml_obligations", "category": "analysis", "description": "Map applicable AML/anti-corruption frameworks for a jurisdiction and entity type", "data_sources": ["FATF_RECOMMENDATIONS", "UNCAC", "OECD_ANTI_BRIBERY", "EU_4AMLD", "EU_5AMLD", "EU_6AMLD", "EU_AMLR_2024"], "verified": true },
+    { "name": "compare_aml_regimes", "category": "analysis", "description": "Compare AML frameworks and FATF ratings between multiple jurisdictions", "data_sources": ["FATF_COUNTRY_RATINGS", "FATF_MUTUAL_EVALUATIONS"], "verified": true },
+    { "name": "list_sources", "category": "meta", "description": "List all data sources with provision counts and metadata", "data_sources": ["FATF_RECOMMENDATIONS", "UNCAC", "OECD_ANTI_BRIBERY", "EU_4AMLD", "EU_5AMLD", "EU_6AMLD", "EU_AMLR_2024", "GRECO", "WOLFSBERG", "FATF_COUNTRY_RATINGS", "FATF_MUTUAL_EVALUATIONS"], "verified": true },
+    { "name": "about", "category": "meta", "description": "Server metadata, data coverage, and disclaimer", "data_sources": [], "verified": true },
+    { "name": "check_data_freshness", "category": "meta", "description": "Check database build date, schema version, and source breakdown", "data_sources": ["FATF_RECOMMENDATIONS", "UNCAC", "OECD_ANTI_BRIBERY", "EU_4AMLD", "EU_5AMLD", "EU_6AMLD", "EU_AMLR_2024", "GRECO", "WOLFSBERG", "FATF_COUNTRY_RATINGS", "FATF_MUTUAL_EVALUATIONS"], "verified": true }
+  ],
+  "summary": {
+    "total_tools": 12,
+    "total_sources": 8,
+    "total_items": 175,
+    "db_size_kb": 256,
+    "known_gaps": 5,
+    "gaps_planned": 4
+  }
+}

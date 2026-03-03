@@ -11,8 +11,15 @@ export function getDirectiveArticle(db: Database.Database, input: GetDirectiveAr
     WHERE short_title LIKE ? OR title LIKE ?
   `).get(`%${input.directive}%`, `%${input.directive}%`) as Record<string, unknown> | undefined;
 
+  const metadata = db.prepare("SELECT value FROM db_metadata WHERE key = 'build_date'").get() as { value: string } | undefined;
+  const _meta = {
+    disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
+    data_source: 'Ansvar Anti-Corruption & AML Database',
+    data_age: metadata?.value ?? 'unknown',
+  };
+
   if (!source) {
-    return { source: null, provisions: [], message: `Directive "${input.directive}" not found` };
+    return { source: null, provisions: [], message: `Directive "${input.directive}" not found`, _meta };
   }
 
   let provisions;
@@ -34,9 +41,6 @@ export function getDirectiveArticle(db: Database.Database, input: GetDirectiveAr
     source,
     provisions,
     count: provisions.length,
-    _meta: {
-      disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
-      data_source: 'Ansvar Anti-Corruption & AML Database',
-    },
+    _meta,
   };
 }

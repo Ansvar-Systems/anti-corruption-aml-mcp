@@ -24,15 +24,19 @@ export function getFatfCountryRating(db: Database.Database, input: GetFatfCountr
     `).get(`%${query}%`);
   }
 
+  const metadata = db.prepare("SELECT value FROM db_metadata WHERE key = 'build_date'").get() as { value: string } | undefined;
+  const _meta = {
+    disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
+    data_source: 'Ansvar Anti-Corruption & AML Database',
+    data_age: metadata?.value ?? 'unknown',
+  };
+
   if (!rating) {
-    return { rating: null, message: `No FATF rating found for "${input.country}". The country may not be on any FATF list.` };
+    return { rating: null, message: `No FATF rating found for "${input.country}". The country may not be on any FATF list.`, _meta };
   }
 
   return {
     rating,
-    _meta: {
-      disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
-      data_source: 'Ansvar Anti-Corruption & AML Database',
-    },
+    _meta,
   };
 }

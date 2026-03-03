@@ -6,6 +6,13 @@ interface GetWolfsbergStandardInput {
 }
 
 export function getWolfsbergStandard(db: Database.Database, input: GetWolfsbergStandardInput) {
+  const metadata = db.prepare("SELECT value FROM db_metadata WHERE key = 'build_date'").get() as { value: string } | undefined;
+  const _meta = {
+    disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
+    data_source: 'Ansvar Anti-Corruption & AML Database',
+    data_age: metadata?.value ?? 'unknown',
+  };
+
   if (input.title) {
     const standard = db.prepare(`
       SELECT * FROM wolfsberg_standards
@@ -15,10 +22,7 @@ export function getWolfsbergStandard(db: Database.Database, input: GetWolfsbergS
     return {
       standards: standard,
       count: standard.length,
-      _meta: {
-        disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
-        data_source: 'Ansvar Anti-Corruption & AML Database',
-      },
+      _meta,
     };
   }
 
@@ -32,10 +36,7 @@ export function getWolfsbergStandard(db: Database.Database, input: GetWolfsbergS
     return {
       standards,
       count: standards.length,
-      _meta: {
-        disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
-        data_source: 'Ansvar Anti-Corruption & AML Database',
-      },
+      _meta,
     };
   }
 
@@ -44,9 +45,6 @@ export function getWolfsbergStandard(db: Database.Database, input: GetWolfsbergS
   return {
     standards: all,
     count: all.length,
-    _meta: {
-      disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
-      data_source: 'Ansvar Anti-Corruption & AML Database',
-    },
+    _meta,
   };
 }

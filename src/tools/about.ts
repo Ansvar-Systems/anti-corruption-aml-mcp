@@ -27,7 +27,7 @@ export function about(db: Database.Database) {
     _meta: {
       disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
       data_source: 'Ansvar Anti-Corruption & AML Database',
-      freshness: metaMap['build_date'] ?? 'unknown',
+      data_age: metaMap['build_date'] ?? 'unknown',
     },
   };
 }

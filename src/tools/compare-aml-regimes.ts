@@ -36,12 +36,15 @@ export function compareAmlRegimes(db: Database.Database, input: CompareAmlRegime
     };
   });
 
+  const metadata = db.prepare("SELECT value FROM db_metadata WHERE key = 'build_date'").get() as { value: string } | undefined;
+
   return {
     comparison: comparisons,
     jurisdiction_count: comparisons.length,
     _meta: {
       disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
       data_source: 'Ansvar Anti-Corruption & AML Database',
+      data_age: metadata?.value ?? 'unknown',
     },
   };
 }

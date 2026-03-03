@@ -16,6 +16,8 @@ export function listSources(db: Database.Database) {
 
   const metadata = db.prepare('SELECT * FROM db_metadata').all();
 
+  const buildDate = db.prepare("SELECT value FROM db_metadata WHERE key = 'build_date'").get() as { value: string } | undefined;
+
   return {
     sources,
     totals: {
@@ -29,6 +31,7 @@ export function listSources(db: Database.Database) {
     _meta: {
       disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
       data_source: 'Ansvar Anti-Corruption & AML Database',
+      data_age: buildDate?.value ?? 'unknown',
     },
   };
 }

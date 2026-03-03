@@ -9,25 +9,29 @@ export function getFatfRecommendation(db: Database.Database, input: GetFatfRecom
     SELECT id FROM sources WHERE short_title = 'FATF 40 Recommendations'
   `).get() as { id: number } | undefined;
 
+  const metadata = db.prepare("SELECT value FROM db_metadata WHERE key = 'build_date'").get() as { value: string } | undefined;
+  const _meta = {
+    disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
+    data_source: 'Ansvar Anti-Corruption & AML Database',
+    data_age: metadata?.value ?? 'unknown',
+  };
+
   if (!source) {
-    return { recommendation: null, message: 'FATF Recommendations source not found' };
+    return { recommendation: null, message: 'FATF Recommendations source not found', _meta };
   }
 
-  const ref = `R${input.number}`;
+  const ref = `FATF-R${input.number}`;
   const provision = db.prepare(`
     SELECT * FROM provisions
     WHERE source_id = ? AND provision_ref = ?
   `).get(source.id, ref);
 
   if (!provision) {
-    return { recommendation: null, message: `Recommendation ${input.number} not found` };
+    return { recommendation: null, message: `Recommendation ${input.number} not found`, _meta };
   }
 
   return {
     recommendation: provision,
-    _meta: {
-      disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
-      data_source: 'Ansvar Anti-Corruption & AML Database',
-    },
+    _meta,
   };
 }

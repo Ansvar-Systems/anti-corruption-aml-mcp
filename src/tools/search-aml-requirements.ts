@@ -28,6 +28,8 @@ export function searchAmlRequirements(db: Database.Database, input: SearchAmlReq
 
   const results = db.prepare(sql).all(...params);
 
+  const metadata = db.prepare("SELECT value FROM db_metadata WHERE key = 'build_date'").get() as { value: string } | undefined;
+
   return {
     query: input.query,
     count: results.length,
@@ -35,6 +37,7 @@ export function searchAmlRequirements(db: Database.Database, input: SearchAmlReq
     _meta: {
       disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
       data_source: 'Ansvar Anti-Corruption & AML Database',
+      data_age: metadata?.value ?? 'unknown',
     },
   };
 }

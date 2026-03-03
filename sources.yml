@@ -1,0 +1,175 @@
+schema_version: "1.0"
+mcp_name: "Anti-Corruption & AML MCP"
+jurisdiction: "INTL"
+deployment_strategy: "Strategy A (Vercel)"
+
+sources:
+  - name: "FATF 40 Recommendations (2012, updated 2023)"
+    authority: "Financial Action Task Force (FATF)"
+    official_portal: "https://www.fatf-gafi.org/en/recommendations.html"
+    retrieval_method: "HTML_SCRAPE"
+    update_frequency: "on_change"
+    records_estimate: "40 recommendations"
+    priority: "critical"
+    coverage_note: "Full text of all 40 FATF Recommendations on combating money laundering and terrorist financing"
+    license_or_terms:
+      type: "official_publication"
+      url: "https://www.fatf-gafi.org"
+      summary: "FATF publications are freely available. Verify redistribution terms for bulk replication."
+    languages:
+      - "en"
+
+  - name: "United Nations Convention against Corruption (UNCAC)"
+    authority: "United Nations Office on Drugs and Crime (UNODC)"
+    official_portal: "https://www.unodc.org/unodc/en/corruption/uncac.html"
+    retrieval_method: "PDF_EXTRACT"
+    update_frequency: "on_change"
+    records_estimate: "33 articles (key provisions)"
+    priority: "critical"
+    coverage_note: "Key provisions from UNCAC (2003) covering preventive measures, criminalization, international cooperation, and asset recovery"
+    license_or_terms:
+      type: "official_publication"
+      url: "https://www.unodc.org"
+      summary: "United Nations treaty text. Public access, verify redistribution terms."
+    languages:
+      - "en"
+
+  - name: "OECD Anti-Bribery Convention"
+    authority: "Organisation for Economic Co-operation and Development (OECD)"
+    official_portal: "https://www.oecd.org/en/topics/anti-bribery-and-corruption.html"
+    retrieval_method: "PDF_EXTRACT"
+    update_frequency: "on_change"
+    records_estimate: "13 articles"
+    priority: "critical"
+    coverage_note: "Full text of the Convention on Combating Bribery of Foreign Public Officials in International Business Transactions (1997)"
+    license_or_terms:
+      type: "official_publication"
+      url: "https://www.oecd.org"
+      summary: "OECD treaty text is publicly available. Verify redistribution terms."
+    languages:
+      - "en"
+
+  - name: "Fourth Anti-Money Laundering Directive (4AMLD)"
+    authority: "European Union"
+    official_portal: "https://eur-lex.europa.eu/eli/dir/2015/849/oj"
+    retrieval_method: "HTML_SCRAPE"
+    update_frequency: "on_change"
+    records_estimate: "8 key articles"
+    priority: "high"
+    coverage_note: "Key provisions from Directive (EU) 2015/849 on prevention of money laundering and terrorist financing"
+    license_or_terms:
+      type: "official_publication"
+      url: "https://eur-lex.europa.eu"
+      summary: "EU legislation. Freely available under EUR-Lex reuse policy."
+    languages:
+      - "en"
+
+  - name: "Fifth Anti-Money Laundering Directive (5AMLD)"
+    authority: "European Union"
+    official_portal: "https://eur-lex.europa.eu/eli/dir/2018/843/oj"
+    retrieval_method: "HTML_SCRAPE"
+    update_frequency: "on_change"
+    records_estimate: "5 key articles"
+    priority: "high"
+    coverage_note: "Key amendments from Directive (EU) 2018/843 — beneficial ownership registers, virtual currencies, high-value goods"
+    license_or_terms:
+      type: "official_publication"
+      url: "https://eur-lex.europa.eu"
+      summary: "EU legislation. Freely available under EUR-Lex reuse policy."
+    languages:
+      - "en"
+
+  - name: "Sixth Anti-Money Laundering Directive (6AMLD)"
+    authority: "European Union"
+    official_portal: "https://eur-lex.europa.eu/eli/dir/2018/1673/oj"
+    retrieval_method: "HTML_SCRAPE"
+    update_frequency: "on_change"
+    records_estimate: "6 key articles"
+    priority: "high"
+    coverage_note: "Key provisions from Directive (EU) 2018/1673 on combating money laundering by criminal law"
+    license_or_terms:
+      type: "official_publication"
+      url: "https://eur-lex.europa.eu"
+      summary: "EU legislation. Freely available under EUR-Lex reuse policy."
+    languages:
+      - "en"
+
+  - name: "EU AML Regulation 2024 (AMLR)"
+    authority: "European Union"
+    official_portal: "https://eur-lex.europa.eu/eli/reg/2024/1624/oj"
+    retrieval_method: "HTML_SCRAPE"
+    update_frequency: "on_change"
+    records_estimate: "7 key articles"
+    priority: "high"
+    coverage_note: "Key provisions from Regulation (EU) 2024/1624 — the new directly applicable AML regulation replacing directive-based approach"
+    license_or_terms:
+      type: "official_publication"
+      url: "https://eur-lex.europa.eu"
+      summary: "EU legislation. Freely available under EUR-Lex reuse policy."
+    languages:
+      - "en"
+
+  - name: "Wolfsberg Group Standards"
+    authority: "Wolfsberg Group"
+    official_portal: "https://www.wolfsberg-principles.com"
+    retrieval_method: "PDF_EXTRACT"
+    update_frequency: "on_change"
+    records_estimate: "8 standards"
+    priority: "high"
+    coverage_note: "Wolfsberg Group AML standards covering correspondent banking, private banking, sanctions screening, trade finance, and payments"
+    license_or_terms:
+      type: "official_publication"
+      url: "https://www.wolfsberg-principles.com"
+      summary: "Wolfsberg Group publications are freely available. Verify redistribution terms."
+    languages:
+      - "en"
+
+  - name: "GRECO Evaluation Reports"
+    authority: "Council of Europe — Group of States against Corruption"
+    official_portal: "https://www.coe.int/en/web/greco"
+    retrieval_method: "HTML_SCRAPE"
+    update_frequency: "quarterly"
+    records_estimate: "11 records"
+    priority: "high"
+    coverage_note: "GRECO evaluation round themes and key recommendations across 5 evaluation rounds"
+    license_or_terms:
+      type: "official_publication"
+      url: "https://www.coe.int/en/web/greco"
+      summary: "Council of Europe publications. Public access."
+    languages:
+      - "en"
+
+  - name: "FATF Country Ratings (Grey/Black Lists)"
+    authority: "Financial Action Task Force (FATF)"
+    official_portal: "https://www.fatf-gafi.org/en/countries/black-and-grey-lists.html"
+    retrieval_method: "HTML_SCRAPE"
+    update_frequency: "quarterly"
+    records_estimate: "26 country ratings"
+    priority: "critical"
+    coverage_note: "FATF grey list (jurisdictions under increased monitoring) and black list (call for action) including deficiency descriptions and action plans"
+    license_or_terms:
+      type: "official_publication"
+      url: "https://www.fatf-gafi.org"
+      summary: "FATF publications are freely available."
+    languages:
+      - "en"
+
+  - name: "FATF Mutual Evaluations"
+    authority: "Financial Action Task Force (FATF)"
+    official_portal: "https://www.fatf-gafi.org/en/topics/mutual-evaluations.html"
+    retrieval_method: "HTML_SCRAPE"
+    update_frequency: "on_change"
+    records_estimate: "10 country evaluations"
+    priority: "high"
+    coverage_note: "FATF mutual evaluation summary results including effectiveness and technical compliance ratings"
+    license_or_terms:
+      type: "official_publication"
+      url: "https://www.fatf-gafi.org"
+      summary: "FATF publications are freely available."
+    languages:
+      - "en"
+
+data_freshness:
+  automated_checks: true
+  check_frequency: "daily"
+  last_verified: "2026-02-28"

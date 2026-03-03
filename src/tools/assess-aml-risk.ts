@@ -22,7 +22,7 @@ export function assessAmlRisk(db: Database.Database, input: AssessAmlRiskInput) 
     WHERE UPPER(country_code) = ? OR UPPER(country_name) LIKE ?
     ORDER BY evaluation_date DESC
     LIMIT 1
-  `).get(query, `%${query}%`, query, `%${query}%`) as Record<string, unknown> | undefined;
+  `).get(query, `%${query}%`) as Record<string, unknown> | undefined;
 
   // Get relevant FATF recommendations for the sector
   let sectorProvisions: unknown[] = [];
@@ -68,6 +68,8 @@ export function assessAmlRisk(db: Database.Database, input: AssessAmlRiskInput) 
     riskFactors.push('No FATF data available for this jurisdiction; independent risk assessment required');
   }
 
+  const buildMeta = db.prepare("SELECT value FROM db_metadata WHERE key = 'build_date'").get() as { value: string } | undefined;
+
   return {
     jurisdiction: input.jurisdiction,
     sector: input.sector ?? null,
@@ -83,6 +85,7 @@ export function assessAmlRisk(db: Database.Database, input: AssessAmlRiskInput) 
     _meta: {
       disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
       data_source: 'Ansvar Anti-Corruption & AML Database',
+      data_age: buildMeta?.value ?? 'unknown',
     },
   };
 }
