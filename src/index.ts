@@ -13,7 +13,7 @@ import { TOOL_DEFINITIONS, handleToolCall } from './tools/registry.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export function createServer(dbPath?: string) {
-  const resolvedPath = dbPath ?? join(__dirname, '..', 'data', 'database.db');
+  const resolvedPath = dbPath ?? join(__dirname, '..', '..', 'data', 'database.db');
   const db = new Database(resolvedPath, { readonly: true });
 
   const server = new Server(
