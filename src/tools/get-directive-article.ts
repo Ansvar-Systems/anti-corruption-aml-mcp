@@ -1,4 +1,5 @@
 import type Database from 'better-sqlite3';
+import { buildCitation } from '../citation.js';
 
 interface GetDirectiveArticleInput {
   directive: string;
@@ -32,7 +33,15 @@ export function getDirectiveArticle(db: Database.Database, input: GetDirectiveAr
 
   return {
     source,
-    provisions,
+    provisions: (provisions as any[]).map((p: any) => ({
+      ...p,
+      _citation: buildCitation(
+        `${(source as any).short_title || input.directive} Art. ${p.provision_ref || ''}`.trim(),
+        `Article ${p.provision_ref || ''} of ${(source as any).short_title || input.directive}`,
+        'get_directive_article',
+        { directive: input.directive, article: p.provision_ref || '' },
+      ),
+    })),
     count: provisions.length,
     _meta: {
       disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
