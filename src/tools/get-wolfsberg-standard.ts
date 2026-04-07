@@ -1,4 +1,5 @@
 import type Database from 'better-sqlite3';
+import { buildCitation } from '../citation.js';
 
 interface GetWolfsbergStandardInput {
   title?: string;
@@ -10,7 +11,10 @@ export function getWolfsbergStandard(db: Database.Database, input: GetWolfsbergS
     const standard = db.prepare(`
       SELECT * FROM wolfsberg_standards
       WHERE title LIKE ?
-    `).all(`%${input.title}%`);
+    `).all(`%${input.title}%`).map((s: any) => ({
+      ...s,
+      _citation: buildCitation(s.title, s.title, 'get_wolfsberg_standard', { title: s.title }),
+    }));
 
     return {
       standards: standard,
@@ -27,7 +31,10 @@ export function getWolfsbergStandard(db: Database.Database, input: GetWolfsbergS
       SELECT * FROM wolfsberg_standards
       WHERE category LIKE ?
       ORDER BY publication_date DESC
-    `).all(`%${input.category}%`);
+    `).all(`%${input.category}%`).map((s: any) => ({
+      ...s,
+      _citation: buildCitation(s.title, s.title, 'get_wolfsberg_standard', { title: s.title }),
+    }));
 
     return {
       standards,
@@ -40,7 +47,10 @@ export function getWolfsbergStandard(db: Database.Database, input: GetWolfsbergS
   }
 
   // Return all
-  const all = db.prepare('SELECT * FROM wolfsberg_standards ORDER BY publication_date DESC').all();
+  const all = db.prepare('SELECT * FROM wolfsberg_standards ORDER BY publication_date DESC').all().map((s: any) => ({
+    ...s,
+    _citation: buildCitation(s.title, s.title, 'get_wolfsberg_standard', { title: s.title }),
+  }));
   return {
     standards: all,
     count: all.length,

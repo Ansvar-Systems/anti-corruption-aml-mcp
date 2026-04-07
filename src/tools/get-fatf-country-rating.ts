@@ -1,4 +1,5 @@
 import type Database from 'better-sqlite3';
+import { buildCitation } from '../citation.js';
 
 interface GetFatfCountryRatingInput {
   country: string;
@@ -30,6 +31,13 @@ export function getFatfCountryRating(db: Database.Database, input: GetFatfCountr
 
   return {
     rating,
+    _citation: buildCitation(
+      `FATF ${(rating as any).country_name || input.country}`,
+      `FATF country rating: ${(rating as any).country_name || input.country}`,
+      'get_fatf_country_rating',
+      { country: input.country },
+      'https://www.fatf-gafi.org/countries/',
+    ),
     _meta: {
       disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
       data_source: 'Ansvar Anti-Corruption & AML Database',
