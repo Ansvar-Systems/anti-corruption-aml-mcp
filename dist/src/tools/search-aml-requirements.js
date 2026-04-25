@@ -1,3 +1,4 @@
+import { buildCitation } from '../citation.js';
 export function searchAmlRequirements(db, input) {
     const limit = input.limit ?? 10;
     let sql = `
@@ -14,7 +15,10 @@ export function searchAmlRequirements(db, input) {
     }
     sql += ` ORDER BY rank LIMIT ?`;
     params.push(limit);
-    const results = db.prepare(sql).all(...params);
+    const results = db.prepare(sql).all(...params).map((r) => ({
+        ...r,
+        _citation: buildCitation(`${r.short_title || r.source_title} ${r.provision_ref || ''}`.trim(), `${r.provision_ref || ''} ${r.short_title || r.source_title}`.trim(), 'get_directive_article', { directive: r.short_title || r.source_title, article: r.provision_ref || '' }),
+    }));
     return {
         query: input.query,
         count: results.length,

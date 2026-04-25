@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 import { TOOL_DEFINITIONS, handleToolCall } from './tools/registry.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export function createServer(dbPath) {
-    const resolvedPath = dbPath ?? join(__dirname, '..', 'data', 'database.db');
+    const resolvedPath = dbPath ?? join(__dirname, '..', '..', 'data', 'database.db');
     const db = new Database(resolvedPath, { readonly: true });
     const server = new Server({ name: 'anti-corruption-aml-mcp', version: '0.1.0' }, { capabilities: { tools: {} } });
     server.setRequestHandler(ListToolsRequestSchema, async () => ({

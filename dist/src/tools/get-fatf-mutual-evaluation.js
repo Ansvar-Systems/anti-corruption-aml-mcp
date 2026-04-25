@@ -1,3 +1,4 @@
+import { buildCitation } from '../citation.js';
 export function getFatfMutualEvaluation(db, input) {
     const query = input.country.toUpperCase();
     let evaluation = db.prepare(`
@@ -19,6 +20,7 @@ export function getFatfMutualEvaluation(db, input) {
     }
     return {
         evaluation,
+        _citation: buildCitation(`FATF MER ${evaluation.country_name || input.country}`, `FATF Mutual Evaluation: ${evaluation.country_name || input.country}`, 'get_fatf_mutual_evaluation', { country: input.country }, 'https://www.fatf-gafi.org/publications/mutualevaluations/'),
         _meta: {
             disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
             data_source: 'Ansvar Anti-Corruption & AML Database',
