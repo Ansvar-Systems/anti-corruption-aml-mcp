@@ -1,3 +1,4 @@
+import { buildCitation } from '../citation.js';
 export function getFatfRecommendation(db, input) {
     const source = db.prepare(`
     SELECT id FROM sources WHERE short_title = 'FATF 40 Recommendations'
@@ -15,6 +16,7 @@ export function getFatfRecommendation(db, input) {
     }
     return {
         recommendation: provision,
+        _citation: buildCitation(`FATF R${input.number}`, `FATF Recommendation ${input.number}`, 'get_fatf_recommendation', { number: String(input.number) }, 'https://www.fatf-gafi.org/recommendations.html'),
         _meta: {
             disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
             data_source: 'Ansvar Anti-Corruption & AML Database',

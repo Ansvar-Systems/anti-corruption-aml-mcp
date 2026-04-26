@@ -1,3 +1,4 @@
+import { buildCitation } from '../citation.js';
 export function getDirectiveArticle(db, input) {
     const source = db.prepare(`
     SELECT * FROM sources
@@ -23,7 +24,10 @@ export function getDirectiveArticle(db, input) {
     }
     return {
         source,
-        provisions,
+        provisions: provisions.map((p) => ({
+            ...p,
+            _citation: buildCitation(`${source.short_title || input.directive} Art. ${p.provision_ref || ''}`.trim(), `Article ${p.provision_ref || ''} of ${source.short_title || input.directive}`, 'get_directive_article', { directive: input.directive, article: p.provision_ref || '' }),
+        })),
         count: provisions.length,
         _meta: {
             disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',

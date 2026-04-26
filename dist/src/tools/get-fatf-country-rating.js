@@ -1,3 +1,4 @@
+import { buildCitation } from '../citation.js';
 export function getFatfCountryRating(db, input) {
     const query = input.country.toUpperCase();
     // Try by country code first, then by name
@@ -20,6 +21,7 @@ export function getFatfCountryRating(db, input) {
     }
     return {
         rating,
+        _citation: buildCitation(`FATF ${rating.country_name || input.country}`, `FATF country rating: ${rating.country_name || input.country}`, 'get_fatf_country_rating', { country: input.country }, 'https://www.fatf-gafi.org/countries/'),
         _meta: {
             disclaimer: 'AML/anti-corruption data is compiled from public FATF, UN, OECD, and EU sources. Country ratings may change between FATF plenary meetings. Not legal or compliance advice.',
             data_source: 'Ansvar Anti-Corruption & AML Database',
