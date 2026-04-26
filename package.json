@@ -2,7 +2,7 @@
   "name": "@ansvar/anti-corruption-aml-mcp",
   "version": "0.1.0",
   "mcpName": "eu.ansvar/anti-corruption-aml-mcp",
-  "description": "Anti-Corruption & AML MCP — FATF, UNCAC, OECD Anti-Bribery, EU AML Directives, Wolfsberg Group, and GRECO regulatory intelligence via Model Context Protocol",
+  "description": "Anti-Corruption & AML MCP \u2014 FATF, UNCAC, OECD Anti-Bribery, EU AML Directives, Wolfsberg Group, and GRECO regulatory intelligence via Model Context Protocol",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
@@ -18,7 +18,8 @@
     "build:db": "tsx scripts/build-db.ts",
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "test:contract": "echo \"No contract tests yet\" && exit 0"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.25.3",
@@ -28,7 +29,6 @@
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.8",
     "@types/node": "^22.15.29",
-    "@vercel/node": "^5.6.6",
     "tsx": "^4.21.0",
     "typescript": "^5.7.0"
   },
